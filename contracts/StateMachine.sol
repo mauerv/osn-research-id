@@ -1,26 +1,17 @@
 pragma solidity ^0.4.11;
 
 contract StateMachine {
+    uint public openingTime;
+    uint public daysToFund = 30;
 
-    // Contract stage timers
-    uint public closingTime;
-    uint public arbitrationTime;
-
-    // Configurable stage timers
-    uint public closingTimeLimit;
-    uint public arbitrationTimeLimit;
-
-    // State management logic
     enum Stages {
-        inactive,
+        funding,
         active,
-        closed,
-        inArbitration,
-        paying,
-        finished
+        published,
+        rejected
     }
 
-    Stages public stage = Stages.inactive;
+    Stages public stage = Stages.funding;
 
     modifier atStage(Stages _stage) {
         require(stage == _stage);
