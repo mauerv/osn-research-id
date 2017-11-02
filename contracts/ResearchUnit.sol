@@ -51,6 +51,11 @@ contract ResearchUnit is SafeMath {
     function publishResearch() atStage(Stages.active) transitionNext() {
     }
 
+    // Lets peer reviewers evaluate a piece of research.
+    function reviewResearch() atStage(Stages.published) {
+
+    }
+
     // Licenses the research, need to think and add validation.
     function licenseResearch(bytes license) atStage(Stages.published) {
         licenses.push(bytes license);
