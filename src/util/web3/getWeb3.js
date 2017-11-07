@@ -2,6 +2,8 @@ import store from '../../store'
 import Web3 from 'web3'
 
 export const WEB3_INITIALIZED = 'WEB3_INITIALIZED'
+export const WEB3_INITIALIZED_SUCCESS = 'WEB3_INITIALIZED_SUCCESS'
+
 function web3Initialized(results) {
   return {
     type: WEB3_INITIALIZED,
@@ -9,7 +11,13 @@ function web3Initialized(results) {
   }
 }
 
-let getWeb3 = new Promise(function(resolve, reject) {
+export const getWeb3Success = () => {
+  return {
+    type: WEB3_INITIALIZED_SUCCESS
+  }
+}
+
+export const getWeb3 = new Promise(function(resolve, reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
   window.addEventListener('load', function(dispatch) {
     var results
@@ -45,5 +53,8 @@ let getWeb3 = new Promise(function(resolve, reject) {
     }
   })
 })
+
+
+
 
 export default getWeb3
