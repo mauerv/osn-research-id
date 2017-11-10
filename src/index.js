@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { UserIsAuthenticated, UserIsNotAuthenticated } from './util/wrappers.js'
 import { getWeb3 } from './util/web3/getWeb3'
-import { requestResearchers, requestPending } from './registry/ui/registrylist/RegistryListActions'
+import { requestResearchers, requestPending } from './registry/ui/researcherList/RegistryListActions'
 
 // Layouts
 import App from './App'

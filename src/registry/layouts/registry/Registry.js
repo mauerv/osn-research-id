@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-import RegistryListContainer from '../../ui/registrylist/RegistryListContainer'
-import PendingListContainer from '../../ui/registrylist/PendingListContainer'
-import Button from '../../../util/Button'
+import RegistryListContainer from '../../ui/researcherList/RegistryListContainer'
+import PendingListContainer from '../../ui/pendingList/PendingListContainer'
 
 class Registry extends Component {
   render() {
@@ -11,7 +10,6 @@ class Registry extends Component {
         <div>
           <RegistryListContainer title='Researchers'/>
           <PendingListContainer title='Waiting Approval' />
-          <Button text='Hola' onButtonClick={() => alert('hi')}/>
         </div>
       </main>
     )

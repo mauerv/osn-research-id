@@ -1,19 +1,25 @@
 import { connect } from 'react-redux'
-import RegistryList from './RegistryList'
+import PendingList from './PendingList'
+import { requestApproval } from './PendingListActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    researchers: state.registry.pending
+    pendingResearchers: state.registry.pending,
+    waitingApproval: state.registry.waitingApproval
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    onButtonClick: () => {
+      dispatch(requestApproval())
+    }
+  }
 }
 
 const PendingListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegistryList)
+)(PendingList)
 
 export default PendingListContainer

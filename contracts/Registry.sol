@@ -24,6 +24,10 @@ contract Registry is Ownable {
     }
 
     function getID() public {
+        // Check that the address is not already pending
+        for (uint i = 0; i < waitingApproval.length; i++) {
+          require(waitingApproval[i] != msg.sender);
+        }
         waitingApproval.push(msg.sender);
     }
 
