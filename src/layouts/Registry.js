@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import RegistryListContainer from '../../ui/researcherList/RegistryListContainer'
-import PendingListContainer from '../../ui/pendingList/PendingListContainer'
+import RegistryListContainer from '../containers/RegistryListContainer'
+import PendingListContainer from '../containers/PendingListContainer'
 
 class Registry extends Component {
   render() {

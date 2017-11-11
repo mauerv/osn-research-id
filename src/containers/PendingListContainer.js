@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import PendingList from './PendingList'
-import { requestApproval } from './PendingListActions'
+import PendingList from '../components/PendingList'
+import { requestApproval } from '../actions/PendingListActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {

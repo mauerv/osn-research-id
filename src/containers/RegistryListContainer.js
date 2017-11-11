@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import RegistryList from './RegistryList'
+import RegistryList from '../components/RegistryList'
 
 const mapStateToProps = (state, ownProps) => {
   return {

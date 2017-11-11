@@ -4,16 +4,16 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { UserIsAuthenticated, UserIsNotAuthenticated } from './util/wrappers.js'
-import { getWeb3 } from './util/web3/getWeb3'
-import { requestResearchers, requestPending } from './registry/ui/researcherList/RegistryListActions'
+import { getWeb3 } from './actions/getWeb3'
+import { requestResearchers, requestPending } from './actions/RegistryListActions'
 
 // Layouts
 import App from './App'
-import Home from './layouts/home/Home'
-import Dashboard from './layouts/dashboard/Dashboard'
-import SignUp from './user/layouts/signup/SignUp'
-import Profile from './user/layouts/profile/Profile'
-import Registry from './registry/layouts/registry/Registry'
+import Home from './layouts/Home'
+import Dashboard from './layouts/Dashboard'
+import SignUp from './layouts/SignUp'
+import Profile from './layouts/Profile'
+import Registry from './layouts/Registry'
 
 // Redux Store
 import store from './store'

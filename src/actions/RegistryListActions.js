@@ -1,5 +1,5 @@
-import RegistryContract from '../../../../build/contracts/Registry.json'
-import store from '../../../store'
+import RegistryContract from '../../build/contracts/Registry.json'
+import store from '../store'
 const contract = require('truffle-contract')
 
 export const REQUEST_RESEARCHERS_SUCCESS = 'REQUEST_RESEARCHERS_SUCCESS'

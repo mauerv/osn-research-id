@@ -1,5 +1,5 @@
-import RegistryContract from '../../../../build/contracts/Registry.json'
-import store from '../../../store'
+import RegistryContract from '../../build/contracts/Registry.json'
+import store from '../store'
 const contract = require('truffle-contract')
 
 export const REQUEST_APPROVAL = 'REQUEST_APPROVAL'
@@ -33,10 +33,10 @@ export const requestApproval = () => {
       registry.setProvider(web3.currentProvider)
       var registryInstance
       web3.eth.getCoinbase((error, coinbase) => {
+        console.log('Coinbase', coinbase)
         if (error) {
           console.error(error);
         }
-        console.log(store.getState().registry.pending);
         if (store.getState().registry.pending.indexOf(coinbase) != -1) {
           registry.deployed().then(function(instance) {
             registryInstance = instance

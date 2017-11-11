@@ -1,5 +1,5 @@
-import { REQUEST_RESEARCHERS_SUCCESS, REQUEST_PENDING_SUCCESS } from './ui/researcherList/RegistryListActions'
-import { REQUEST_APPROVAL, REQUEST_APPROVAL_SUCCESS } from './ui/pendingList/PendingListActions'
+import { REQUEST_RESEARCHERS_SUCCESS, REQUEST_PENDING_SUCCESS } from '../actions/RegistryListActions'
+import { REQUEST_APPROVAL, REQUEST_APPROVAL_SUCCESS } from '../actions/PendingListActions'
 
 let initialState = {
   researchers: [],

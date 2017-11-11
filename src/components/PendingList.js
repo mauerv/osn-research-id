@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../../util/Button'
+import Button from '../components/Button'
 
 const PendingList = ({ pendingResearchers, title, onButtonClick, waitingApproval }) => {
   return(
