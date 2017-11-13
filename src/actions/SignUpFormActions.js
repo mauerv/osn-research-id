@@ -1,4 +1,4 @@
-import AuthenticationContract from '../../build/contracts/Authentication.json'
+import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import { loginUser } from '../actions/LoginButtonActions'
 import store from '../store'
 
@@ -11,12 +11,12 @@ export function signUpUser(name) {
   if (typeof web3 !== 'undefined') {
 
     return function(dispatch) {
-      // Using truffle-contract we create the authentication object.
-      const authentication = contract(AuthenticationContract)
-      authentication.setProvider(web3.currentProvider)
+      // Using truffle-contract we create the registry object.
+      const registry = contract(ResearcherRegistry)
+      registry.setProvider(web3.currentProvider)
 
       // Declaring this for later so we can chain functions on Authentication.
-      var authenticationInstance
+      var registryInstance
 
       // Get current ethereum wallet.
       web3.eth.getCoinbase((error, coinbase) => {
@@ -25,11 +25,11 @@ export function signUpUser(name) {
           console.error(error);
         }
 
-        authentication.deployed().then(function(instance) {
-          authenticationInstance = instance
+        registry.deployed().then(function(instance) {
+          registryInstance = instance
 
           // Attempt to sign up user.
-          authenticationInstance.signup(name, {from: coinbase})
+          registryInstance.signup(name, {from: coinbase})
           .then(function(result) {
             // If no error, login user.
             return dispatch(loginUser())

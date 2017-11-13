@@ -1,4 +1,4 @@
-import RegistryContract from '../../build/contracts/Registry.json'
+import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import store from '../store'
 const contract = require('truffle-contract')
 
@@ -29,7 +29,7 @@ export const requestApproval = () => {
   return function(dispatch) {
     let web3 = store.getState().web3.web3Instance
     if (typeof web3 !== 'undefined') {
-      const registry = contract(RegistryContract)
+      const registry = contract(ResearcherRegistry)
       registry.setProvider(web3.currentProvider)
       var registryInstance
       web3.eth.getCoinbase((error, coinbase) => {
