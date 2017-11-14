@@ -15,12 +15,6 @@ contract ResearcherRegistry is Killable {
   function ResearcherRegistry() {
     researcherIndex.push(owner);
     researchers[owner].name = 'Mauro';
-
-    pendingIndex.push(0x606976cf33acda58510584db484356ea7d30adb3);
-    pendingResearchers[0x606976cf33acda58510584db484356ea7d30adb3].name = 'Emi';
-
-    pendingIndex.push(0x2364ef79d6fb0d00c414d061df5cccc273393d8d);
-    pendingResearchers[0x2364ef79d6fb0d00c414d061df5cccc273393d8d].name = 'Gabi';
   }
 
   modifier onlyExistingResearcher {
@@ -57,10 +51,10 @@ contract ResearcherRegistry is Killable {
         pendingResearchers[msg.sender].name = name;
         pendingIndex.push(msg.sender);
 
-        return (pendingResearchers[msg.sender].name);
+        return pendingResearchers[msg.sender].name;
     }
 
-    return (researchers[msg.sender].name);
+    return researchers[msg.sender].name;
   }
 
   function update(bytes32 name)

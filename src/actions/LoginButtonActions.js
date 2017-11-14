@@ -1,5 +1,6 @@
 import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import { browserHistory } from 'react-router'
+import { requestPending, requestResearchers } from './RegistryListActions'
 import store from '../store'
 
 const contract = require('truffle-contract')
@@ -35,6 +36,7 @@ export function loginUser() {
 
         registry.deployed().then(function(instance) {
           registryInstance = instance
+          registryInstance.getPending().then(result => console.log(result))
 
           registryInstance.owner().then(result => {
             isOwner = result == coinbase
@@ -44,8 +46,12 @@ export function loginUser() {
             .then(function(result) {
               // If no error, login user.
               var userName = web3.toUtf8(result)
+              dispatch(requestResearchers())
+              dispatch(requestPending())
               dispatch(userLoggedIn({"name": userName}, isOwner))
 
+            })
+            .then(function() {
               // Used a manual redirect here as opposed to a wrapper.
               // This way, once logged in a user can still access the home page.
               var currentLocation = browserHistory.getCurrentLocation()

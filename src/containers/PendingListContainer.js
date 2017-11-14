@@ -5,7 +5,6 @@ import { requestApproval } from '../actions/PendingListActions'
 const mapStateToProps = (state, ownProps) => {
   return {
     pendingResearchers: state.registry.pending,
-    waitingApproval: state.registry.waitingApproval
   }
 }
 

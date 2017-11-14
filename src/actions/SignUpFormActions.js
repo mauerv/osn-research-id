@@ -1,6 +1,7 @@
 import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import { loginUser } from '../actions/LoginButtonActions'
 import store from '../store'
+import { requestPending, requestResearchers } from './RegistryListActions'
 
 const contract = require('truffle-contract')
 
@@ -27,12 +28,10 @@ export function signUpUser(name) {
 
         registry.deployed().then(function(instance) {
           registryInstance = instance
-
           // Attempt to sign up user.
           registryInstance.signup(name, {from: coinbase})
           .then(function(result) {
-            // If no error, login user.
-            return dispatch(loginUser())
+
           })
           .catch(function(result) {
             // If error...
