@@ -5,10 +5,11 @@ import store from '../store'
 const contract = require('truffle-contract')
 
 export const USER_LOGGED_IN = 'USER_LOGGED_IN'
-function userLoggedIn(user) {
+function userLoggedIn(user, isOwner) {
   return {
     type: USER_LOGGED_IN,
-    payload: user
+    payload: user,
+    isOwner: isOwner
   }
 }
 
@@ -23,7 +24,7 @@ export function loginUser() {
       const registry = contract(ResearcherRegistry)
       registry.setProvider(web3.currentProvider)
       // Declaring this for later so we can chain functions on Authentication.
-      var registryInstance
+      var registryInstance, isOwner
 
       // Get current ethereum wallet.
       web3.eth.getCoinbase((error, coinbase) => {
@@ -34,25 +35,28 @@ export function loginUser() {
 
         registry.deployed().then(function(instance) {
           registryInstance = instance
-          registryInstance.owner().then((result) => console.log(result));
-          // Attempt to login user.
-          registryInstance.login({from: coinbase})
-          .then(function(result) {
-            // If no error, login user.
-            var userName = web3.toUtf8(result)
 
-            dispatch(userLoggedIn({"name": userName}))
+          registryInstance.owner().then(result => {
+            isOwner = result == coinbase
 
-            // Used a manual redirect here as opposed to a wrapper.
-            // This way, once logged in a user can still access the home page.
-            var currentLocation = browserHistory.getCurrentLocation()
+            // Attempt to login user.
+            registryInstance.login({from: coinbase})
+            .then(function(result) {
+              // If no error, login user.
+              var userName = web3.toUtf8(result)
+              dispatch(userLoggedIn({"name": userName}, isOwner))
 
-            if ('redirect' in currentLocation.query)
-            {
-              return browserHistory.push(decodeURIComponent(currentLocation.query.redirect))
-            }
+              // Used a manual redirect here as opposed to a wrapper.
+              // This way, once logged in a user can still access the home page.
+              var currentLocation = browserHistory.getCurrentLocation()
 
-            return browserHistory.push('/dashboard')
+              if ('redirect' in currentLocation.query)
+              {
+                return browserHistory.push(decodeURIComponent(currentLocation.query.redirect))
+              }
+
+              return browserHistory.push('/registry')
+            })
           })
           .catch(function(result) {
             // If error, go to signup page.

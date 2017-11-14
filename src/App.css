@@ -22,8 +22,10 @@ code {
   padding: 45px 20px;
 }
 
-.pure-button-primary {
+.pure-button-primary, a.pure-button-primary {
   background-color: #0c1a2b;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .pure-button-primary:hover {
@@ -62,11 +64,11 @@ code {
   float: right;
 }
 
-.navbar .uport-logo {
-  height: 16px;
-  margin-right: 10px;
-}
-
 ul {
   list-style: none;
+}
+
+.jumbotron {
+  text-align: center;
+  padding: 10%;
 }

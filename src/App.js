@@ -22,6 +22,9 @@ class App extends Component {
         <li className="pure-menu-item">
           <Link to="/profile" className="pure-menu-link">Profile</Link>
         </li>
+        <li className="pure-menu-item">
+          <Link to="/registry" className="pure-menu-link">Registry</Link>
+        </li>
         <LogoutButtonContainer />
       </span>
     )
@@ -30,9 +33,6 @@ class App extends Component {
       <span>
         <li className="pure-menu-item">
           <Link to="/signup" className="pure-menu-link">Sign Up</Link>
-        </li>
-        <li className="pure-menu-item">
-          <Link to="/registry" className="pure-menu-link">Registry</Link>
         </li>
         <LoginButtonContainer />
       </span>
@@ -45,7 +45,7 @@ class App extends Component {
             <OnlyGuestLinks />
             <OnlyAuthLinks />
           </ul>
-          <Link to="/" className="pure-menu-heading pure-menu-link">Truffle Box</Link>
+          <Link to="/" className="pure-menu-heading pure-menu-link">OSN</Link>
         </nav>
 
         {this.props.children}
