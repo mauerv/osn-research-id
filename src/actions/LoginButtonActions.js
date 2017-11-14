@@ -1,6 +1,7 @@
 import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import { browserHistory } from 'react-router'
-import { requestPending, requestResearchers } from './RegistryListActions'
+import { requestResearchers } from './RegistryListActions'
+import { requestPending } from './PendingListActions'
 import store from '../store'
 
 const contract = require('truffle-contract')

@@ -5,8 +5,8 @@ import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { UserIsAuthenticated, UserIsNotAuthenticated } from './util/wrappers.js'
 import { getWeb3 } from './actions/getWeb3'
-import { requestResearchers, requestPending } from './actions/RegistryListActions'
-
+import { requestResearchers } from './actions/RegistryListActions'
+import { requestPending } from './actions/PendingListActions'
 // Layouts
 import App from './App'
 import Home from './layouts/Home'

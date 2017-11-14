@@ -1,5 +1,5 @@
-import { REQUEST_RESEARCHERS_SUCCESS, REQUEST_PENDING_SUCCESS } from '../actions/RegistryListActions'
-import { REQUEST_APPROVAL, REQUEST_APPROVAL_SUCCESS } from '../actions/PendingListActions'
+import { REQUEST_RESEARCHERS_SUCCESS } from '../actions/RegistryListActions'
+import { REQUEST_APPROVAL_SUCCESS, REQUEST_PENDING_SUCCESS } from '../actions/PendingListActions'
 
 let initialState = {
   researchers: [],
@@ -17,8 +17,6 @@ const registryReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         pending: action.payload
       })
-    case REQUEST_APPROVAL:
-
     case REQUEST_APPROVAL_SUCCESS:
       return {
         ...state,
