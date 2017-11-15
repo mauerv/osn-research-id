@@ -1,14 +1,13 @@
 import React from 'react'
-import Button from '../components/Button'
+import PendingListItem from './PendingListItem'
 
-const PendingList = ({ pendingResearchers, title, onButtonClick, waitingApproval }) => {
+const PendingList = ({ pendingResearchers, title, onButtonClick }) => {
   return(
     <div>
       <h2>{title}</h2>
       <ul>
-          {pendingResearchers.map(researcher => <li key={researcher}>{researcher}</li>)}
+          {pendingResearchers.map(researcher => <PendingListItem id={researcher} onButtonClick={onButtonClick}/>)}
       </ul>
-      <Button text='Request Approval' onButtonClick={onButtonClick}/>
     </div>
   )
 }

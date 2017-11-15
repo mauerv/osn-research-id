@@ -37,7 +37,6 @@ export function loginUser() {
 
         registry.deployed().then(function(instance) {
           registryInstance = instance
-          registryInstance.getPending().then(result => console.log(result))
 
           registryInstance.owner().then(result => {
             isOwner = result == coinbase
