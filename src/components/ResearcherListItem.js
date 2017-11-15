@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from './Button'
 
-class RegistryListItem extends Component {
+class ResearcherListItem extends Component {
   constructor(props) {
     super(props)
 
@@ -25,4 +25,4 @@ class RegistryListItem extends Component {
   }
 }
 
-export default RegistryListItem
+export default ResearcherListItem

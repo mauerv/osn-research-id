@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import RegistryList from '../components/RegistryList'
+import ResearcherList from '../components/ResearcherList'
 import { removeResearcherID } from '../actions/ResearcherListActions'
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const RegistryListContainer = connect(
+const ResearcherListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegistryList)
+)(ResearcherList)
 
-export default RegistryListContainer
+export default ResearcherListContainer

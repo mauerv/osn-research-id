@@ -1,7 +1,7 @@
 import React from 'react'
-import RegistryListItem from './RegistryListItem'
+import ResearcherListItem from './ResearcherListItem'
 
-const RegistryList = ({ researchers, title, isOwner, onButtonClick }) => {
+const ResearcherList = ({ researchers, title, isOwner, onButtonClick }) => {
   return(
     <div>
       <h2>{title}</h2>
@@ -9,7 +9,7 @@ const RegistryList = ({ researchers, title, isOwner, onButtonClick }) => {
           {researchers.map(researcher => {
             if (researcher != 0x0) {
               if (isOwner) {
-                return <RegistryListItem key={researcher} id={researcher} onButtonClick={onButtonClick}/>
+                return <ResearcherListItem key={researcher} id={researcher} onButtonClick={onButtonClick}/>
               } else {
                 return <li key={researcher}><p>{researcher}</p></li>
               }
@@ -20,4 +20,4 @@ const RegistryList = ({ researchers, title, isOwner, onButtonClick }) => {
   )
 }
 
-export default RegistryList
+export default ResearcherList

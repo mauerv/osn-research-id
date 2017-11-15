@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import RegistryListContainer from '../containers/RegistryListContainer'
+import ResearcherListContainer from '../containers/ResearcherListContainer'
 import PendingListContainer from '../containers/PendingListContainer'
 
 const RegistryComponent  = ({isOwner}) => {
     return (
       <main className="container">
         <div>
-          <RegistryListContainer title='Researchers'/>
+          <ResearcherListContainer title='Researchers'/>
           {isOwner ? <PendingListContainer title='Waiting Approval' /> : <p></p>}
         </div>
       </main>
