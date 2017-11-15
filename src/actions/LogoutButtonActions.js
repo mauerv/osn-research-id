@@ -1,17 +1,17 @@
 import { browserHistory } from 'react-router'
 
-export const USER_LOGGED_OUT = 'USER_LOGGED_OUT'
-function userLoggedOut(user) {
+export const RESEARCHER_LOGGED_OUT = 'RESEARCHER_LOGGED_OUT'
+function researcherLoggedOut(researcher) {
   return {
-    type: USER_LOGGED_OUT,
-    payload: user
+    type: RESEARCHER_LOGGED_OUT,
+    payload: researcher
   }
 }
 
-export function logoutUser() {
+export function logoutResearcher() {
   return function(dispatch) {
-    // Logout user.
-    dispatch(userLoggedOut())
+    // Logout researcher.
+    dispatch(researcherLoggedOut())
 
     // Redirect home.
     return browserHistory.push('/')

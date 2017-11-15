@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import LoginButton from '../components/LoginButton'
-import { loginUser } from '../actions/LoginButtonActions'
+import { loginResearcher } from '../actions/LoginButtonActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {}
@@ -8,10 +8,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoginUserClick: (event) => {
+    onLoginResearcherClick: (event) => {
       event.preventDefault();
 
-      dispatch(loginUser())
+      dispatch(loginResearcher())
     }
   }
 }

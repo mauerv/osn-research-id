@@ -5,7 +5,7 @@ import { removeResearcherID } from '../actions/ResearcherListActions'
 const mapStateToProps = (state, ownProps) => {
   return {
     researchers: state.registry.researchers,
-    isOwner: state.user.isOwner
+    isOwner: state.researcher.isOwner
   }
 }
 

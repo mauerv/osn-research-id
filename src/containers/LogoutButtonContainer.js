@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import LogoutButton from '../components/LogoutButton'
-import { logoutUser } from '../actions/LogoutButtonActions'
+import { logoutResearcher } from '../actions/LogoutButtonActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {}
@@ -8,10 +8,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogoutUserClick: (event) => {
+    onLogoutResearcherClick: (event) => {
       event.preventDefault();
 
-      dispatch(logoutUser())
+      dispatch(logoutResearcher())
     }
   }
 }

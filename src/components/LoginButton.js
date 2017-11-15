@@ -1,9 +1,9 @@
 import React from 'react'
 
-const LoginButton = ({ onLoginUserClick }) => {
+const LoginButton = ({ onLoginResearcherClick }) => {
   return(
     <li className="pure-menu-item">
-      <a href="#" className="pure-menu-link" onClick={(event) => onLoginUserClick(event)}>Login</a>
+      <a href="#" className="pure-menu-link" onClick={(event) => onLoginResearcherClick(event)}>Login</a>
     </li>
   )
 }

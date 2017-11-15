@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import SignUpForm from '../components/SignUpForm'
-import { signUpUser } from '../actions/SignUpFormActions'
+import { signUpResearcher } from '../actions/SignUpFormActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {}
@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSignUpFormSubmit: (name) => {
-      dispatch(signUpUser(name))
+      dispatch(signUpResearcher(name))
     }
   }
 }

@@ -17,7 +17,7 @@ const RegistryComponent  = ({isOwner}) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isOwner: state.user.isOwner
+    isOwner: state.researcher.isOwner
   }
 }
 

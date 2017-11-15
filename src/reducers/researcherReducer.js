@@ -3,8 +3,8 @@ const initialState = {
   isOwner: false
 }
 
-const userReducer = (state = initialState, action) => {
-  if (action.type === 'USER_LOGGED_IN' || action.type === 'USER_UPDATED')
+const researcherReducer = (state = initialState, action) => {
+  if (action.type === 'RESEARCHER_LOGGED_IN' || action.type === 'RESEARCHER_UPDATED')
   {
     return Object.assign({}, state, {
       data: action.payload,
@@ -12,7 +12,7 @@ const userReducer = (state = initialState, action) => {
     })
   }
 
-  if (action.type === 'USER_LOGGED_OUT')
+  if (action.type === 'RESEARCHER_LOGGED_OUT')
   {
     return Object.assign({}, state, {
       data: null,
@@ -23,4 +23,4 @@ const userReducer = (state = initialState, action) => {
   return state
 }
 
-export default userReducer
+export default researcherReducer

@@ -22,7 +22,6 @@ function removeResearcher(id) {
 
 export const requestResearchers = () => {
   return function(dispatch) {
-    // Logout user.
     let web3 = store.getState().web3.web3Instance
     if (typeof web3 !== 'undefined') {
       const registry = contract(ResearcherRegistry)

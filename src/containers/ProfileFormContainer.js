@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import ProfileForm from '../components/ProfileForm'
-import { updateUser } from '../actions/ProfileFormActions'
+import { updateResearcher } from '../actions/ProfileFormActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    name: state.user.data.name
+    name: state.researcher.data.name
   }
 }
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
     onProfileFormSubmit: (name) => {
       event.preventDefault();
 
-      dispatch(updateUser(name))
+      dispatch(updateResearcher(name))
     }
   }
 }

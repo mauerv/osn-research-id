@@ -3,34 +3,34 @@ import { routerActions } from 'react-router-redux'
 
 // Layout Component Wrappers
 
-export const UserIsAuthenticated = UserAuthWrapper({
-  authSelector: state => state.user.data,
+export const ResearcherIsAuthenticated = UserAuthWrapper({
+  authSelector: state => state.researcher.data,
   redirectAction: routerActions.replace,
   failureRedirectPath: '/', // '/login' by default.
-  wrapperDisplayName: 'UserIsAuthenticated'
+  wrapperDisplayName: 'ResearcherIsAuthenticated'
 })
 
-export const UserIsNotAuthenticated = UserAuthWrapper({
-  authSelector: state => state.user,
+export const ResearcherIsNotAuthenticated = UserAuthWrapper({
+  authSelector: state => state.researcher,
   redirectAction: routerActions.replace,
   failureRedirectPath: (state, ownProps) => ownProps.location.query.redirect || '/dashboard',
-  wrapperDisplayName: 'UserIsNotAuthenticated',
-  predicate: user => user.data === null,
+  wrapperDisplayName: 'ResearcherIsNotAuthenticated',
+  predicate: researcher => researcher.data === null,
   allowRedirectBack: false
 })
 
 // UI Component Wrappers
 
 export const VisibleOnlyAuth = UserAuthWrapper({
-  authSelector: state => state.user,
+  authSelector: state => state.researcher,
   wrapperDisplayName: 'VisibleOnlyAuth',
-  predicate: user => user.data,
+  predicate: researcher => researcher.data,
   FailureComponent: null
 })
 
 export const HiddenOnlyAuth = UserAuthWrapper({
-  authSelector: state => state.user,
+  authSelector: state => state.researcher,
   wrapperDisplayName: 'HiddenOnlyAuth',
-  predicate: user => user.data === null,
+  predicate: researcher => researcher.data === null,
   FailureComponent: null
 })

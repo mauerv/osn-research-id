@@ -6,16 +6,16 @@ import store from '../store'
 
 const contract = require('truffle-contract')
 
-export const USER_LOGGED_IN = 'USER_LOGGED_IN'
-function userLoggedIn(user, isOwner) {
+export const RESEARCHER_LOGGED_IN = 'RESEARCHER_LOGGED_IN'
+function researcherLoggedIn(researcher, isOwner) {
   return {
-    type: USER_LOGGED_IN,
-    payload: user,
+    type: RESEARCHER_LOGGED_IN,
+    payload: researcher,
     isOwner: isOwner
   }
 }
 
-export function loginUser() {
+export function loginResearcher() {
   let web3 = store.getState().web3.web3Instance
 
   // Double-check web3's status.
@@ -41,19 +41,19 @@ export function loginUser() {
           registryInstance.owner().then(result => {
             isOwner = result === coinbase
 
-            // Attempt to login user.
+            // Attempt to login researcher.
             registryInstance.login({from: coinbase})
             .then(function(result) {
-              // If no error, login user.
-              var userName = web3.toUtf8(result)
+              // If no error, login researcher.
+              var researcherName = web3.toUtf8(result)
               dispatch(requestResearchers())
               dispatch(requestPendingResearchers())
-              dispatch(userLoggedIn({"name": userName}, isOwner))
+              dispatch(researcherLoggedIn({"name": researcherName}, isOwner))
 
             })
             .then(function() {
               // Used a manual redirect here as opposed to a wrapper.
-              // This way, once logged in a user can still access the home page.
+              // This way, once logged in a researcher can still access the home page.
               var currentLocation = browserHistory.getCurrentLocation()
 
               if ('redirect' in currentLocation.query)

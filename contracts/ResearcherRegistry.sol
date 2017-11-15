@@ -18,7 +18,7 @@ contract ResearcherRegistry is Killable {
   }
 
   modifier onlyExistingResearcher {
-    // Check if user exists or terminate
+    // Check if researcher exists or terminate
 
     require(!(researchers[msg.sender].name == 0x0));
     _;
@@ -37,33 +37,25 @@ contract ResearcherRegistry is Killable {
     return (researchers[msg.sender].name);
   }
 
-  function signup(bytes32 name)
+  function getID(bytes32 name)
   payable
   onlyValidName(name)
   returns (bytes32) {
-    // Check if user exists.
-    // If yes, return user name.
-    // If no, check if name was sent.
-    // If yes, create and return user.
     require(pendingResearchers[msg.sender].name == 0x0);
-
     if (researchers[msg.sender].name == 0x0)
     {
         pendingResearchers[msg.sender].name = name;
         pendingIndex.push(msg.sender);
-
         return pendingResearchers[msg.sender].name;
     }
-
     return researchers[msg.sender].name;
   }
 
-  function update(bytes32 name)
+  function updateID(bytes32 name)
   payable
   onlyValidName(name)
   onlyExistingResearcher
   returns (bytes32) {
-    // Update user name.
 
     if (researchers[msg.sender].name != 0x0)
     {
@@ -82,13 +74,13 @@ contract ResearcherRegistry is Killable {
   }
 
   function approveID(address id) onlyOwner() public {
-    // Validar que esta en pending y no sea un researcher ya.
+    // Validate that it's pending approval and it's not a valid researcher already.
     require(pendingResearchers[id].name != 0x0);
     require(researchers[id].name == 0x0);
-    // Agregar a researcher y a researcherIndex.
+    // Add researcher to mapping and index array.
     researchers[id].name = pendingResearchers[id].name;
     researcherIndex.push(id);
-    // Sacar de pending y de pendingIndex
+    // Remove from pending mapping and index array.
     pendingResearchers[id].name = 0x0;
     for (uint i = 0; i < pendingIndex.length; i++) {
         if (pendingIndex[i] == id) {
@@ -109,9 +101,9 @@ contract ResearcherRegistry is Killable {
   }
 
   function revokeID(address id) onlyOwner() public {
-    // Validar que todo este en orden
+    // Validate that it's a valid researcher ID.
     require(researchers[id].name != 0x0);
-    // Sacarlo de researcher y researcherIndex
+    // Remove ID from researcher and researcherIndex.
     researchers[id].name = 0x0;
     for (uint i = 0; i < researcherIndex.length; i++) {
         if (researcherIndex[i] == id) {

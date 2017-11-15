@@ -3,15 +3,15 @@ import store from '../store'
 
 const contract = require('truffle-contract')
 
-export const USER_UPDATED = 'USER_UPDATED'
-function userUpdated(user) {
+export const RESEARCHER_UPDATED = 'RESEARCHER_UPDATED'
+function researcherUpdated(researcher) {
   return {
-    type: USER_UPDATED,
-    payload: user
+    type: RESEARCHER_UPDATED,
+    payload: researcher
   }
 }
 
-export function updateUser(name) {
+export function updateResearcher(name) {
   let web3 = store.getState().web3.web3Instance
 
   // Double-check web3's status.
@@ -35,12 +35,12 @@ export function updateUser(name) {
         registry.deployed().then(function(instance) {
           registryInstance = instance
 
-          // Attempt to login user.
-          registryInstance.update(name, {from: coinbase})
+          // Attempt to login researcher.
+          registryInstance.updateID(name, {from: coinbase})
           .then(function(result) {
-            // If no error, update user.
+            // If no error, update researcher.
 
-            dispatch(userUpdated({"name": name}))
+            dispatch(researcherUpdated({"name": name}))
 
             return alert('Name updated!')
           })

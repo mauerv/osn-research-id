@@ -6,15 +6,15 @@ contract('ResearcherRegistry', function(accounts) {
 
   beforeEach(async () => {
     registry = await ResearcherRegistry.new()
-    await registry.signup('testuser', {from: accounts[1]})
+    await registry.getID('testresearcher', {from: accounts[1]})
   })
 
   it('Should add a pending researcher.', async () => {
     let pendingResearcher = await registry.pendingIndex(0)
     let pendingResearcherNameHex = await registry.pendingResearchers(accounts[1])
     let pendingResearcherName = web3.toUtf8(String(pendingResearcherNameHex))
-    assert.equal(accounts[1], pendingResearcher, 'The user was not added to pendingIndex.');
-    assert.equal('testuser', pendingResearcherName, 'The name was not added to pendingResearchers.')
+    assert.equal(accounts[1], pendingResearcher, 'The researcher was not added to pendingIndex.');
+    assert.equal('testresearcher', pendingResearcherName, 'The name was not added to pendingResearchers.')
   })
 
   it('Should login a researcher with valid ID', async () => {
@@ -31,14 +31,14 @@ contract('ResearcherRegistry', function(accounts) {
     let researcher = await registry.researcherIndex(1)
     let researcherName = web3.toUtf8(String(await registry.researchers(accounts[1])))
 
-    assert.equal(accounts[1], researcher, 'The user was not added to researcherIndex.');
-    assert.equal('testuser', researcherName, 'The name was not added to researchers mapping.')
+    assert.equal(accounts[1], researcher, 'The researcher was not added to researcherIndex.');
+    assert.equal('testresearcher', researcherName, 'The name was not added to researchers mapping.')
     // Check that it's no longer a pending researcher.
     let pendingResearcher = await registry.pendingIndex(0)
     let pendingName = await registry.pendingResearchers(accounts[1])
 
-    assert.equal(0x0, pendingResearcher, 'The user should be removed from pendingIndex')
-    assert.equal(0x0, pendingName, 'The user should be removed from pendingResearchers')
+    assert.equal(0x0, pendingResearcher, 'The researcher should be removed from pendingIndex')
+    assert.equal(0x0, pendingName, 'The researcher should be removed from pendingResearchers')
   })
 
   it('Owner should be able to reject a researcher ID.', async () => {
@@ -47,8 +47,8 @@ contract('ResearcherRegistry', function(accounts) {
     let pendingResearcher = await registry.pendingIndex(0)
     let pendingName = await registry.pendingResearchers(accounts[1])
 
-    assert.equal(0x0, pendingResearcher, 'The user should be removed from pendingIndex')
-    assert.equal(0x0, pendingName, 'The user should be removed from pendingResearchers')
+    assert.equal(0x0, pendingResearcher, 'The researcher should be removed from pendingIndex')
+    assert.equal(0x0, pendingName, 'The researcher should be removed from pendingResearchers')
   })
 
   it('Owner should be able to revoke a researcher ID.', async () => {
@@ -58,7 +58,7 @@ contract('ResearcherRegistry', function(accounts) {
     let researcher = await registry.researcherIndex(1)
     let researcherName = await registry.researchers(accounts[1])
 
-    assert.equal(0x0, researcher, 'The user should be removed from researcherIndex')
-    assert.equal(0x0, researcherName, 'The user should be removed from researcherResearchers')
+    assert.equal(0x0, researcher, 'The researcher should be removed from researcherIndex')
+    assert.equal(0x0, researcherName, 'The researcher should be removed from researcherResearchers')
   })
 });
