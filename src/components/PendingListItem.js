@@ -10,15 +10,24 @@ class PendingListItem extends Component {
     }
   }
 
-  handleSubmit(event) {
+  handleApprove(event) {
     event.preventDefault()
 
-    this.props.onButtonClick(this.state.id)
+    this.props.onApproveClick(this.state.id)
   }
+
+  handleReject(event) {
+    event.preventDefault()
+
+    this.props.onRejectClick(this.state.id)
+  }
+
   render() {
     return (
       <li>
-        <p>{this.props.id}</p><Button text='Approve' onButtonClick={this.handleSubmit.bind(this)}/>
+        <p>{this.props.id}</p>
+          <Button text='Approve' onButtonClick={this.handleApprove.bind(this)}/>
+          <Button text='Reject' onButtonClick={this.handleReject.bind(this)} />
       </li>
     )
   }

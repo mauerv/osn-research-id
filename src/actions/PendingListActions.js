@@ -54,3 +54,28 @@ export const approveResearcherID = (id) => {
     }
   }
 }
+
+export const rejectResearcherID = (id) => {
+  return function(dispatch) {
+    let web3 = store.getState().web3.web3Instance
+    if (typeof web3 !== 'undefined') {
+      const registry = contract(ResearcherRegistry)
+      registry.setProvider(web3.currentProvider)
+      var registryInstance
+      web3.eth.getCoinbase((error, coinbase) => {
+        if (error) {
+          console.error(error)
+        }
+        registry.deployed().then(function(instance) {
+          registryInstance = instance
+
+          registryInstance.rejectID(id, {from: coinbase})
+          .then(function() {
+            dispatch(requestResearchers())
+            dispatch(requestPendingResearchers())
+          })
+        })
+      })
+    }
+  }
+}

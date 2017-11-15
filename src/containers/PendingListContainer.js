@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import PendingList from '../components/PendingList'
-import { approveResearcherID } from '../actions/PendingListActions'
+import { approveResearcherID, rejectResearcherID } from '../actions/PendingListActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,8 +10,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onButtonClick: (id) => {
+    onApproveClick: (id) => {
       dispatch(approveResearcherID(id))
+    },
+    onRejectClick: (id) => {
+      dispatch(rejectResearcherID(id))
     }
   }
 }
