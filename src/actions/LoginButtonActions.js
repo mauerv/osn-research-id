@@ -1,6 +1,7 @@
 import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import { browserHistory } from 'react-router'
-import { requestPending, requestResearchers } from './RegistryListActions'
+import { requestResearchers } from './RegistryListActions'
+import { requestPending } from './PendingListActions'
 import store from '../store'
 
 const contract = require('truffle-contract')
@@ -36,7 +37,6 @@ export function loginUser() {
 
         registry.deployed().then(function(instance) {
           registryInstance = instance
-          registryInstance.getPending().then(result => console.log(result))
 
           registryInstance.owner().then(result => {
             isOwner = result == coinbase
