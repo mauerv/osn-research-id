@@ -63,12 +63,12 @@ export function loginResearcher() {
 
               return browserHistory.push('/registry')
             })
-          })
-          .catch(function(result) {
-            // If error, go to signup page.
-            console.error('Wallet ' + coinbase + ' does not have an account!')
+            .catch(function(result) {
+              // If error, go to signup page.
+              alert('Wallet ' + coinbase + ' does not have an account!')
 
-            return browserHistory.push('/signup')
+              return browserHistory.push('/signup')
+            })
           })
         })
       })

@@ -1,10 +1,9 @@
 import { browserHistory } from 'react-router'
 
 export const RESEARCHER_LOGGED_OUT = 'RESEARCHER_LOGGED_OUT'
-function researcherLoggedOut(researcher) {
+function researcherLoggedOut() {
   return {
-    type: RESEARCHER_LOGGED_OUT,
-    payload: researcher
+    type: RESEARCHER_LOGGED_OUT
   }
 }
 
