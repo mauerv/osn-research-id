@@ -45,6 +45,7 @@ contract ResearcherRegistry is Killable {
     // If yes, return user name.
     // If no, check if name was sent.
     // If yes, create and return user.
+    require(pendingResearchers[msg.sender].name == 0x0);
 
     if (researchers[msg.sender].name == 0x0)
     {
@@ -89,7 +90,7 @@ contract ResearcherRegistry is Killable {
     researcherIndex.push(id);
     // Sacar de pending y de pendingIndex
     pendingResearchers[id].name = 0x0;
-    for (uint i = 0; i < pendingIndex.length - 1; i++) {
+    for (uint i = 0; i < pendingIndex.length; i++) {
         if (pendingIndex[i] == id) {
             delete pendingIndex[i];
         }

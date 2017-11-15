@@ -6,7 +6,9 @@ const PendingList = ({ pendingResearchers, title, onButtonClick }) => {
     <div>
       <h2>{title}</h2>
       <ul>
-          {pendingResearchers.map(researcher => <PendingListItem id={researcher} onButtonClick={onButtonClick}/>)}
+          {pendingResearchers.map(researcher => {
+              if (researcher != 0x0) return <PendingListItem key={researcher} id={researcher} onButtonClick={onButtonClick}/>
+          })}
       </ul>
     </div>
   )
