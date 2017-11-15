@@ -101,7 +101,7 @@ contract ResearcherRegistry is Killable {
     require(pendingResearchers[id].name != 0x0);
 
     pendingResearchers[id].name = 0x0;
-    for (uint i = 0; i < pendingIndex.length - 1; i++) {
+    for (uint i = 0; i < pendingIndex.length; i++) {
         if (pendingIndex[i] == id) {
             delete pendingIndex[i];
         }
@@ -113,7 +113,7 @@ contract ResearcherRegistry is Killable {
     require(researchers[id].name != 0x0);
     // Sacarlo de researcher y researcherIndex
     researchers[id].name = 0x0;
-    for (uint i = 0; i < researcherIndex.length - 1; i++) {
+    for (uint i = 0; i < researcherIndex.length; i++) {
         if (researcherIndex[i] == id) {
             delete researcherIndex[i];
         }
