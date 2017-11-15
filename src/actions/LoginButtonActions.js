@@ -1,7 +1,7 @@
 import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
 import { browserHistory } from 'react-router'
-import { requestResearchers } from './RegistryListActions'
-import { requestPending } from './PendingListActions'
+import { requestResearchers } from './ResearcherListActions'
+import { requestPendingResearchers } from './PendingListActions'
 import store from '../store'
 
 const contract = require('truffle-contract')
@@ -39,7 +39,7 @@ export function loginUser() {
           registryInstance = instance
 
           registryInstance.owner().then(result => {
-            isOwner = result == coinbase
+            isOwner = result === coinbase
 
             // Attempt to login user.
             registryInstance.login({from: coinbase})
@@ -47,7 +47,7 @@ export function loginUser() {
               // If no error, login user.
               var userName = web3.toUtf8(result)
               dispatch(requestResearchers())
-              dispatch(requestPending())
+              dispatch(requestPendingResearchers())
               dispatch(userLoggedIn({"name": userName}, isOwner))
 
             })

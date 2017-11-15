@@ -5,8 +5,8 @@ import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { UserIsAuthenticated, UserIsNotAuthenticated } from './util/wrappers.js'
 import { getWeb3 } from './actions/getWeb3'
-import { requestResearchers } from './actions/RegistryListActions'
-import { requestPending } from './actions/PendingListActions'
+import { requestResearchers } from './actions/ResearcherListActions'
+import { requestPendingResearchers } from './actions/PendingListActions'
 // Layouts
 import App from './App'
 import Home from './layouts/Home'
@@ -25,7 +25,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 getWeb3
 .then(results => {
   store.dispatch(requestResearchers())
-  store.dispatch(requestPending())
+  store.dispatch(requestPendingResearchers())
 })
 .catch(() => {
   console.log('Error in web3 initialization.')

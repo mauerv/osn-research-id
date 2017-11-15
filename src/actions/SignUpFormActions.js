@@ -1,8 +1,5 @@
 import ResearcherRegistry from '../../build/contracts/ResearcherRegistry.json'
-import { loginUser } from '../actions/LoginButtonActions'
 import store from '../store'
-import { requestResearchers } from './RegistryListActions'
-import { requestPending } from './PendingListActions'
 
 const contract = require('truffle-contract')
 
