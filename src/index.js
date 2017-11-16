@@ -7,6 +7,10 @@ import { ResearcherIsAuthenticated, ResearcherIsNotAuthenticated } from './util/
 import { getWeb3 } from './actions/getWeb3'
 import { requestResearchers } from './actions/ResearcherListActions'
 import { requestPendingResearchers } from './actions/PendingListActions'
+
+// Redux Store
+import store from './store'
+
 // Layouts
 import App from './App'
 import Home from './layouts/Home'
@@ -14,9 +18,6 @@ import Dashboard from './layouts/Dashboard'
 import SignUp from './layouts/SignUp'
 import Profile from './layouts/Profile'
 import Registry from './layouts/Registry'
-
-// Redux Store
-import store from './store'
 
 // Initialize react-router-redux.
 const history = syncHistoryWithStore(browserHistory, store)

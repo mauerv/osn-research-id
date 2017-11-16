@@ -5,23 +5,28 @@ class SignUpForm extends Component {
     super(props)
 
     this.state = {
-      name: ''
+      name: '',
+      email: ''
     }
   }
 
-  onInputChange(event) {
+  onNameChange(event) {
     this.setState({ name: event.target.value })
+  }
+
+  onEmailChange(event) {
+    this.setState({ email: event.target.value })
   }
 
   handleSubmit(event) {
     event.preventDefault()
 
-    if (this.state.name.length < 2)
+    if (this.state.name.length < 2 || this.state.email.length < 2)
     {
-      return alert('Please fill in your name.')
+      return alert('Please fill in all required data.')
     }
 
-    this.props.onSignUpFormSubmit(this.state.name)
+    this.props.onSignUpFormSubmit(this.state.name, this.state.email)
   }
 
   render() {
@@ -29,9 +34,10 @@ class SignUpForm extends Component {
       <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit.bind(this)}>
         <fieldset>
           <label htmlFor="name">Your Name</label>
-          <input id="name" type="text" value={this.state.name} onChange={this.onInputChange.bind(this)} placeholder="Name" />
-          <span className="pure-form-message">This is a required field.</span>
-
+          <input id="name" type="text" value={this.state.name} onChange={this.onNameChange.bind(this)} placeholder="Name" />
+          <label htmlFor="email">Your Email</label>
+          <input id="email" type="text" value={this.state.email} onChange={this.onEmailChange.bind(this)} placeholder="Email" />
+          <span className="pure-form-message">All fields are required.</span>
           <br />
 
           <button type="submit" className="pure-button pure-button-primary">Get ID</button>

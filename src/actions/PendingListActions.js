@@ -45,9 +45,14 @@ export const approveResearcherID = (id) => {
           registryInstance = instance
 
           registryInstance.approveID(id, {from: coinbase})
-          .then(function() {
+          .then(function(results) {
             dispatch(requestResearchers())
             dispatch(requestPendingResearchers())
+            if (results.logs[0].event === 'LogApproveID') {
+              let email = web3.toUtf8(String(results.logs[0].args.email))
+              // Send an email letting them know that their ID was approved.
+              window.emailjs.send("default_service", "osn_id_approval", {email: email})
+            }
           })
         })
       })

@@ -103,8 +103,3 @@ ul {
 .list-title {
   margin-bottom: 0;
 }
-@media (max-width: 480) {
-  .container {
-    padding: 25% 20px;
-  }
-}

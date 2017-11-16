@@ -4,7 +4,7 @@ import store from '../store'
 
 const contract = require('truffle-contract')
 
-export function signUpResearcher(name) {
+export function signUpResearcher(name, email) {
   let web3 = store.getState().web3.web3Instance
 
   // Double-check web3's status.
@@ -37,9 +37,8 @@ export function signUpResearcher(name) {
           }
 
           // Attempt to sign up researcher.
-          registryInstance.signup(name, {from: coinbase})
+          registryInstance.getID(name, email, {from: coinbase})
           .then(function(result) {
-
             browserHistory.push('/')
             return alert('Successful Sign-Up')
           })
