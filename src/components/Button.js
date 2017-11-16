@@ -2,7 +2,7 @@ import React from 'react'
 
 const Button = ({text, icon, onButtonClick}) => {
   return(
-    <button onClick={onButtonClick}>
+    <button className='pure-button pure-button-primary' onClick={onButtonClick}>
       <p>{text}</p>
       <img src={icon} />
     </button>

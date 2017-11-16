@@ -24,10 +24,12 @@ class PendingListItem extends Component {
 
   render() {
     return (
-      <li>
-        <p>{this.props.id}</p>
-          <Button text='Approve' onButtonClick={this.handleApprove.bind(this)}/>
-          <Button text='Reject' onButtonClick={this.handleReject.bind(this)} />
+      <li className='list-item'>
+          <p>{this.props.id}</p>
+          <div className='list-item-buttons'>
+            <Button text='Approve' onButtonClick={this.handleApprove.bind(this)}/>
+            <Button text='Reject' onButtonClick={this.handleReject.bind(this)} />
+          </div>
       </li>
     )
   }

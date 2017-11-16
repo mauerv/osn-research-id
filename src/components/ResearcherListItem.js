@@ -17,7 +17,7 @@ class ResearcherListItem extends Component {
   }
   render() {
     return (
-      <li>
+      <li className='list-item'>
         <p>{this.props.id}</p>
         <Button text='Remove' onButtonClick={this.handleSubmit.bind(this)}/>
       </li>

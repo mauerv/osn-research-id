@@ -19,7 +19,8 @@ code {
 .container {
   box-sizing: border-box;
   width: 100%;
-  padding: 45px 20px;
+  padding: 10% 20px;
+  text-align: center;
 }
 
 .pure-button-primary, a.pure-button-primary {
@@ -30,6 +31,11 @@ code {
 
 .pure-button-primary:hover {
   background-color: #233e5e;
+}
+
+.pure-form input[type="text"] {
+  margin: 0px auto 10px auto;
+  text-align: center;
 }
 
 .pure-form input[type="text"]:focus {
@@ -66,9 +72,39 @@ code {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
-.jumbotron {
-  text-align: center;
-  padding: 10%;
+.subtitle {
+  margin: 25px 0
+}
+
+/* Registry */
+.researcher-list {
+  margin-top: 0;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.list-item p {
+  display: inline;
+}
+
+.list-item .pure-button.pure-button-primary {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.list-title {
+  margin-bottom: 0;
+}
+@media (max-width: 480) {
+  .container {
+    padding: 25% 20px;
+  }
 }

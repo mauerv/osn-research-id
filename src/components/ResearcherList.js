@@ -4,8 +4,8 @@ import ResearcherListItem from './ResearcherListItem'
 const ResearcherList = ({ researchers, title, isOwner, onButtonClick }) => {
   return(
     <div>
-      <h2>{title}</h2>
-      <ul>
+      <h2 className='list-title'>{title}</h2>
+      <ul className='researcher-list'>
           {researchers.map(researcher => {
             if (researcher != 0x0) {
               if (isOwner) {
